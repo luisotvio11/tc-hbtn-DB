@@ -3,22 +3,29 @@ import java.sql.DriverManager;
 import java.util.Collections;
 import java.util.List;
 
-public class Teste {
-        public static void main(String[] argv) throws Exception {
-            List drivers = Collections.list(DriverManager.getDrivers());
-            for (int i = 0; i < drivers.size(); i++) {
-                Driver driver = (Driver) drivers.get(i);
+public class PrintJDBCDrivers{
 
 
-                String name = driver.getClass().getName();
-                System.out.println("Nome do Driver " + name);
+    public static void printDriver(Driver driver) {
+
+        String nome = driver.getClass().getName();
+        int majorVersion = driver.getMajorVersion();
+        int minorVersion = driver.getMinorVersion();
+
+        System.out.println("Driver Name: " + nome);
+        System.out.println("Driver Major Version: " + majorVersion);
+        System.out.println("Driver Driver Minor: " + minorVersion);
 
 
-                int majorVersion = driver.getMajorVersion();
-                System.out.println("Maior Versão " + majorVersion);
-                int minorVersion = driver.getMinorVersion();
-                System.out.println("Menor Versão " + minorVersion);
-
-            }
-        }
     }
+
+    public static void main(String[] args) {
+        for (Enumeration<Driver> element = DriverManager.getDrivers(); element.hasMoreElements();) {
+            Driver driver = element.nextElement();
+            printDriver(driver);
+        }
+
+    }
+            
+        }
+    
