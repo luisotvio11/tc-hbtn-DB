@@ -1,31 +1,24 @@
 import java.sql.Driver;
 import java.sql.DriverManager;
-import java.util.Enumeration;
+import java.util.Collections;
+import java.util.List;
 
-    public class PrintJDBCDrivers {
+public class Teste {
+        public static void main(String[] argv) throws Exception {
+            List drivers = Collections.list(DriverManager.getDrivers());
+            for (int i = 0; i < drivers.size(); i++) {
+                Driver driver = (Driver) drivers.get(i);
 
 
-        public static void main(String[] args) {
+                String name = driver.getClass().getName();
+                System.out.println("Nome do Driver " + name);
 
-            for (Enumeration<Driver> element = DriverManager.getDrivers(); element.hasMoreElements(); ) {
-                Driver driver = element.nextElement();
-                printDriver(driver);
+
+                int majorVersion = driver.getMajorVersion();
+                System.out.println("Maior Versão " + majorVersion);
+                int minorVersion = driver.getMinorVersion();
+                System.out.println("Menor Versão " + minorVersion);
+
             }
-
         }
-
-        public static void printDriver(Driver driver) {
-            String nome = driver.getClass().getName();
-            int majorVersion = driver.getMajorVersion();
-            int minorVersionnorVersion = driver.getMinorVersion();
-
-            System.out.println("Nome Driver: "+nome);
-            System.out.println("Driver Maior Versão: "+ majorVersion);
-            System.out.println("Driver Menor Versão: "+ minorVersionnorVersion);
-
-
-        }
-
-
     }
-
