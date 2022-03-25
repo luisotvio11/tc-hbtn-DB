@@ -2,14 +2,14 @@ public class Cliente {
 
     private String nome;
     private int idade;
-    private String CPF;
-    private String RG;
+    private String cpf;
+    private String rg;
 
-    public Cliente(String nome, int idade, String CPF, String RG) {
+    public Cliente(String nome, int idade, String cpf, String rg) {
         this.nome = nome;
         this.idade = idade;
-        this.CPF = CPF;
-        this.RG = RG;
+        this.cpf = cpf;
+        this.rg = rg;
     }
 
     public String getNome() {
@@ -28,19 +28,19 @@ public class Cliente {
         this.idade = idade;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getRG() {
-        return RG;
+    public String getRg() {
+        return rg;
     }
 
-    public void setRG(String RG) {
-        this.RG = RG;
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 }
