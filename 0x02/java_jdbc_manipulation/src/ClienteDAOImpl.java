@@ -1,4 +1,3 @@
-import jdk.jshell.execution.Util;
 
 import java.sql.*;
 
@@ -75,23 +74,23 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     @Override
     public void update(String urlConexao, int id, String name, Integer idade) {
-        String sql = "UPDATE cliente SET nome = ?"  + "idade = ? " + "WHERE id = ?";
-        try (Connection conn = this.connect(urlConexao);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setInt(2, idade);
-            pstmt.setInt(3, id);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            String sql = "UPDATE cliente SET nome = ?  , idade = ?    WHERE id = ?";
+            try (Connection conn = this.connect(urlConexao);
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, name);
+                pstmt.setInt(2, idade);
+                pstmt.setInt(3, id);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
-    }
 
 
     @Override
     public void delete(String urlConexao, int id) {
 
-        String sql = "DELETE FROM cliente WHERE id = " + id;
+        String sql = "DELETE FROM cliente WHERE id = ?" ;
         try (Connection conn = this.connect(urlConexao);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
@@ -101,8 +100,4 @@ public class ClienteDAOImpl implements ClienteDAO {
         }
     }
 
-}
-
-
-
-}
+        }
